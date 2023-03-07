@@ -1,6 +1,7 @@
 # vite-plugin-style-vw-loader
 
-A loader that can convert the style px in Vue3 label to vw.  [README in Chinese language](https://github.com/gitboyzcf/vite-plugin-style-vw-loader/blob/master/README.zh-CN.md) 
+A loader that can convert the style px in Vue3 label to vw.  
+> [README in Chinese language](https://github.com/gitboyzcf/vite-plugin-style-vw-loader/blob/master/README.zh-CN.md) 
 
 ## Install
 
