@@ -1,8 +1,8 @@
 # vite-plugin-style-vw-loader
 
-一个可以将vue标签内样式px转换vw的 loader，适用于Vite+Vue3
+A loader that can convert the style px in Vue3 label to vw.
 
-## 安装
+## Install
 
 ```
 npm install vite-plugin-style-vw-loader -D
@@ -14,7 +14,7 @@ or
 yarn add vite-plugin-style-vw-loader -D
 ```
 
-## 使用
+## Basic use
 
 vite.config.js
 
@@ -39,35 +39,35 @@ export default defineConfig({
 })
 ```
 
-## 示例
+## Examples
 
-### 输入
+### Input
 
 ```html
 <h3 style="font-size: 28px;margin-top: 10px" width="500px">Test</h3>
 ```
 
-### 输出
+### Output
 
 ```html
 <h3 width="66.66667vw" style="font-size: 3.73333vw; margin-top: 1.33333vw;">Test</h3>
 ```
 
-## 配置参数
+## Configuration
 
-**默认配置：**
+**default configuration：**
 
 ```javascript
 {
-    unitToConvert: "px", // 需要转换的单位，默认为"px"
-    viewportWidth: 750, // 设计稿的视口宽度,如传入函数，函数的参数为当前处理的文件路径
-    unitPrecision: 5, // 单位转换后保留的精度
-    viewportUnit: "vw", // 希望使用的视口单位
-    fontViewportUnit: "vw", // 字体使用的视口单位
-    minPixelValue: 1, // 设置最小的转换数值，如果为 1 的话，只有大于 1 的值会被转换
+    unitToConvert: "px", // The unit to be converted is "px" by default.
+    viewportWidth: 750, // The viewport width of the design draft, such as the incoming function, whose parameter is the file path currently processed.
+    unitPrecision: 5, // Precision retained after unit conversion.
+    viewportUnit: "vw", // Viewport units you want to use.
+    fontViewportUnit: "vw", // Viewport units used by fonts.
+    minPixelValue: 1, // Set the minimum conversion value. If it is 1, only values greater than 1 will be converted.
 }
 ```
 
-## 参与
+## Partake
 
-只支持vue3模板的转换，react模板未提供支持。如果你也有转换style的需求、欢迎参与完善该项目。
+Only the conversion of Vue3 template is supported, and the React template does not. If you also have the need to transform style, welcome to participate in improving the project.
