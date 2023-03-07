@@ -1,6 +1,6 @@
 # vite-plugin-style-vw-loader
 
-一个可以将vue标签内样式px转换vw的 loader，适用于Vite+Vue3
+一个可以将Vue3标签内样式px转换vw的 Loader
 
 ## 安装
 
@@ -70,4 +70,4 @@ export default defineConfig({
 
 ## 参与
 
-只支持vue3模板的转换，react模板未提供支持。如果你也有转换style的需求、欢迎参与完善该项目。
+只支持Vue3模板的转换，React模板未提供支持。如果你也有转换style的需求、欢迎参与完善该项目。
