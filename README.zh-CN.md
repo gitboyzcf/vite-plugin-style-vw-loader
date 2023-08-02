@@ -2,6 +2,8 @@
 
 一个可以将Vue3标签内样式px转换vw的 Loader
 
+>  [English](https://github.com/gitboyzcf/vite-plugin-style-vw-loader#readme)  | 中文
+
 ## 安装
 
 ```
