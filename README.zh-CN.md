@@ -7,13 +7,13 @@
 ## 安装
 
 ```
-npm install vite-plugin-style-vw-loader -D
+npm install vite-plugin-style-vw-loader@1.0.3 -D
 
 or
-pnpm install vite-plugin-style-vw-loader -D
+pnpm install vite-plugin-style-vw-loader@1.0.3 -D
 
 or
-yarn add vite-plugin-style-vw-loader -D
+yarn add vite-plugin-style-vw-loader@1.0.3 -D
 ```
 
 ## 使用
