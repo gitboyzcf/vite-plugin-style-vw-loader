@@ -1,8 +1,13 @@
 {
   "name": "vite-plugin-style-vw-loader",
-  "version": "1.0.0",
-  "description": "一个可以将vue标签内样式px转换vw的 vite loader",
-  "main": "dist/index.js",
+  "version": "1.0.1",
+  "description": "一个可以将vue3标签内样式px转换vw的 vite loader",
+  "exports": {
+    "./": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm",
     "test": "cd examples/test-vue3 && pnpm run dev"
@@ -15,7 +20,7 @@
     "loader",
     "vw"
   ],
-  "repository":{
+  "repository": {
     "type": "git",
     "url": "https://github.com/gitboyzcf/vite-plugin-style-vw-loader.git"
   },
@@ -29,5 +34,8 @@
     "tsup": "^6.6.3",
     "typescript": "^4.9.5",
     "vite": "^4.1.4"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
