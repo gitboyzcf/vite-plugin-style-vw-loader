@@ -8,7 +8,7 @@ interface IdefaultsProp {
 }
 
 // 默认参数
-const defaultsProp = {
+const defaultsProp: IdefaultsProp = {
   unitToConvert: "px", // 需要转换的单位，默认为"px"
   viewportWidth: 750, // 设计稿的视口宽度,如传入函数，函数的参数为当前处理的文件路径
   unitPrecision: 5, // 单位转换后保留的精度
@@ -23,12 +23,12 @@ function toFixed(number: number, precision: number) {
 }
 
 function createPxReplace(
-  viewportSize,
-  minPixelValue,
-  unitPrecision,
-  viewportUnit
+  viewportSize: number,
+  minPixelValue: number,
+  unitPrecision: number,
+  viewportUnit:any
 ) {
-  return function ($0, $1) {
+  return function ($0:any, $1:any) {
     if (!$1) return;
     const pixels = parseFloat($1);
     if (pixels <= minPixelValue) return;
