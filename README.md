@@ -1,18 +1,19 @@
 # vite-plugin-style-vw-loader
 
-A loader that can convert the style px in Vue3 label to vw.  
->  English | [中文](https://github.com/gitboyzcf/vite-plugin-style-vw-loader/blob/master/README.zh-CN.md) 
+A loader that can convert the style px in Vue3 label to vw.
+
+> English | [中文](https://github.com/gitboyzcf/vite-plugin-style-vw-loader/blob/master/README.zh-CN.md)
 
 ## Install
 
 ```
-npm install vite-plugin-style-vw-loader@1.0.3 -D
+npm install vite-plugin-style-vw-loader -D
 
 or
-pnpm install vite-plugin-style-vw-loader@1.0.3 -D
+pnpm install vite-plugin-style-vw-loader -D
 
 or
-yarn add vite-plugin-style-vw-loader@1.0.3 -D
+yarn add vite-plugin-style-vw-loader -D
 ```
 
 ## Basic use
@@ -20,24 +21,31 @@ yarn add vite-plugin-style-vw-loader@1.0.3 -D
 vite.config.js
 
 ```javascript
-import vitePluginStyleVwLoader from 'vite-plugin-style-vw-loader';
+import vitePluginStyleVwLoader from "vite-plugin-style-vw-loader";
 
-import {
-    defineConfig
-} from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: process.env.NODE_ENV === 'production' ? './' : '/',
-    plugins: [vitePluginStyleVwLoader(), vue()],
-    resolve: {
-        alias: {
-            '@': fileURLToPath(new URL('./src',
-                import.meta.url))
-        }
-    }
-})
+  base: process.env.NODE_ENV === "production" ? "./" : "/",
+  plugins: [vitePluginStyleVwLoader(), vue()],
+  //   plugins: [
+  //     vitePluginStyleVwLoader({
+  //       unitToConvert: "px",
+  //       viewportWidth: 750,
+  //       unitPrecision: 5,
+  //       viewportUnit: "vw",
+  //       fontViewportUnit: "vw",
+  //       minPixelValue: 1,
+  //     })
+  //   ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});
 ```
 
 ## Examples
@@ -51,7 +59,9 @@ export default defineConfig({
 ### Output
 
 ```html
-<h3 width="66.66667vw" style="font-size: 3.73333vw; margin-top: 1.33333vw;">Test</h3>
+<h3 width="66.66667vw" style="font-size: 3.73333vw; margin-top: 1.33333vw;">
+  Test
+</h3>
 ```
 
 ## Configuration

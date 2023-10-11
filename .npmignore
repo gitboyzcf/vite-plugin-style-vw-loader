@@ -1,0 +1,4 @@
+.git/
+examples/
+.npmignore
+pnpm-lock.yaml

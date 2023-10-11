@@ -1,19 +1,19 @@
 # vite-plugin-style-vw-loader
 
-一个可以将Vue3标签内样式px转换vw的 Loader
+一个可以将 Vue3 标签内样式 px 转换 vw 的 Loader
 
->  [English](https://github.com/gitboyzcf/vite-plugin-style-vw-loader#readme)  | 中文
+> [English](https://github.com/gitboyzcf/vite-plugin-style-vw-loader#readme) | 中文
 
 ## 安装
 
 ```
-npm install vite-plugin-style-vw-loader@1.0.3 -D
+npm install vite-plugin-style-vw-loader -D
 
 or
-pnpm install vite-plugin-style-vw-loader@1.0.3 -D
+pnpm install vite-plugin-style-vw-loader -D
 
 or
-yarn add vite-plugin-style-vw-loader@1.0.3 -D
+yarn add vite-plugin-style-vw-loader -D
 ```
 
 ## 使用
@@ -21,24 +21,31 @@ yarn add vite-plugin-style-vw-loader@1.0.3 -D
 vite.config.js
 
 ```javascript
-import vitePluginStyleVwLoader from 'vite-plugin-style-vw-loader';
+import vitePluginStyleVwLoader from "vite-plugin-style-vw-loader";
 
-import {
-    defineConfig
-} from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: process.env.NODE_ENV === 'production' ? './' : '/',
-    plugins: [vitePluginStyleVwLoader(), vue()],
-    resolve: {
-        alias: {
-            '@': fileURLToPath(new URL('./src',
-                import.meta.url))
-        }
-    }
-})
+  base: process.env.NODE_ENV === "production" ? "./" : "/",
+  plugins: [vitePluginStyleVwLoader(), vue()],
+  //   plugins: [
+  //     vitePluginStyleVwLoader({
+  //       unitToConvert: "px",
+  //       viewportWidth: 750,
+  //       unitPrecision: 5,
+  //       viewportUnit: "vw",
+  //       fontViewportUnit: "vw",
+  //       minPixelValue: 1,
+  //     })
+  //   ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});
 ```
 
 ## 示例
@@ -52,7 +59,9 @@ export default defineConfig({
 ### 输出
 
 ```html
-<h3 width="66.66667vw" style="font-size: 3.73333vw; margin-top: 1.33333vw;">Test</h3>
+<h3 width="66.66667vw" style="font-size: 3.73333vw; margin-top: 1.33333vw;">
+  Test
+</h3>
 ```
 
 ## 配置参数
@@ -72,4 +81,4 @@ export default defineConfig({
 
 ## 参与
 
-只支持Vue3模板的转换，React模板未提供支持。如果你也有转换style的需求、欢迎参与完善该项目。
+只支持 Vue3 模板的转换，React 模板未提供支持。如果你也有转换 style 的需求、欢迎参与完善该项目。
