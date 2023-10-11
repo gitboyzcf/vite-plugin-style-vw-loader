@@ -37,5 +37,8 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "bugs": {
+    "url": "https://github.com/gitboyzcf/vite-plugin-style-vw-loader/issues"
   }
 }

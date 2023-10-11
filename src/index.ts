@@ -44,6 +44,7 @@ function vitePluginStyleVWLoader(customOptions: IdefaultsProp = defaultsProp) {
     name: "vite-plugin-style-vw-loader",
     // 构建阶段的通用钩子：在每个传入模块请求时被调用：在每个传入模块请求时被调用，主要是用来转换单个模块
     transform(code:any, id:any) {
+      customOptions = Object.assign(defaultsProp, customOptions)
       if (/.vue$/.test(id)) {
         let _source = "";
         if (templateReg.test(code)) {
