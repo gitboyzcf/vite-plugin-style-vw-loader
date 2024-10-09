@@ -37,7 +37,7 @@ function createPxReplace(
 }
 
 // 匹配 template 标签的内容
-const templateReg: RegExp = /<template>([\s\S]+)<\/template>/gi;
+const templateReg = /<template>([\s\S]+)<\/template>/gi;
 // 匹配 style 属性内的内容
 const styleRegex = /style="([^"]*)"/gi;
 // 在 style 属性的内容中匹配 px 值
