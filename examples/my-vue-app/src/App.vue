@@ -5,6 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <div>
     <div style="width: 375px; height: 50px; background-color: red"></div>
+    <div class="w-100px h-100px bg-red-400" ></div>
   </div>
   <HelloWorld msg="Vite + Vue" />
 </template>

@@ -52,7 +52,8 @@ function createPxReplace(viewportSize, minPixelValue, unitPrecision, viewportUni
   };
 }
 var templateReg = /<template>([\s\S]+)<\/template>/gi;
-var pxGlobalReg = /(\d+)px/gi;
+var styleRegex = /style="([^"]*)"/gi;
+var pxRegex = /(\d+(\.\d+)?)px/gi;
 function vitePluginStyleVWLoader(customOptions = defaultsProp) {
   return {
     // 插件名称
@@ -65,18 +66,22 @@ function vitePluginStyleVWLoader(customOptions = defaultsProp) {
         if (templateReg.test(code)) {
           _source = code.match(templateReg)[0];
         }
-        if (pxGlobalReg.test(_source)) {
-          const $_source = _source.replace(
-            pxGlobalReg,
-            createPxReplace(
-              customOptions.viewportWidth,
-              customOptions.minPixelValue,
-              customOptions.unitPrecision,
-              customOptions.viewportUnit
-            )
-          );
-          code = code.replace(_source, $_source);
-        }
+        const convertedTemplate = _source.replace(
+          styleRegex,
+          (styleMatch, styleContent) => {
+            const $_source = styleContent.replace(
+              pxRegex,
+              createPxReplace(
+                customOptions.viewportWidth,
+                customOptions.minPixelValue,
+                customOptions.unitPrecision,
+                customOptions.viewportUnit
+              )
+            );
+            return `style="${$_source}"`;
+          }
+        );
+        code = code.replace(_source, convertedTemplate);
       }
       return { code };
     }

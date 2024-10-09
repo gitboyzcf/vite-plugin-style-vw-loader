@@ -1,10 +1,10 @@
 interface IdefaultsProp {
-  unitToConvert: string,
-  viewportWidth: number,
-  unitPrecision: number,
-  viewportUnit: string,
-  fontViewportUnit: string,
-  minPixelValue: number,
+  unitToConvert: string;
+  viewportWidth: number;
+  unitPrecision: number;
+  viewportUnit: string;
+  fontViewportUnit: string;
+  minPixelValue: number;
 }
 
 // 默认参数
@@ -28,41 +28,49 @@ function createPxReplace(
   unitPrecision: number,
   viewportUnit: any
 ) {
-  return function ($0:any, $1:any) {
+  return function ($0: any, $1: any) {
     if (!$1) return;
     const pixels = parseFloat($1);
     if (pixels <= minPixelValue) return;
     return toFixed((pixels / viewportSize) * 100, unitPrecision) + viewportUnit;
   };
 }
-const templateReg:RegExp = /<template>([\s\S]+)<\/template>/gi;
-const pxGlobalReg:RegExp = /(\d+)px/gi;
+
+// 匹配 template 标签的内容
+const templateReg: RegExp = /<template>([\s\S]+)<\/template>/gi;
+// 匹配 style 属性内的内容
+const styleRegex = /style="([^"]*)"/gi;
+// 在 style 属性的内容中匹配 px 值
+const pxRegex = /(\d+(\.\d+)?)px/gi;
 
 function vitePluginStyleVWLoader(customOptions: IdefaultsProp = defaultsProp) {
   return {
     // 插件名称
     name: "vite-plugin-style-vw-loader",
     // 构建阶段的通用钩子：在每个传入模块请求时被调用：在每个传入模块请求时被调用，主要是用来转换单个模块
-    transform(code:any, id:any) {
-      customOptions = Object.assign(defaultsProp, customOptions)
+    transform(code: any, id: any) {
+      customOptions = Object.assign(defaultsProp, customOptions);
       if (/.vue$/.test(id)) {
         let _source = "";
         if (templateReg.test(code)) {
           _source = code.match(templateReg)[0];
         }
-        if (pxGlobalReg.test(_source)) {
-          const $_source = _source.replace(
-            pxGlobalReg,
-            createPxReplace(
-              customOptions.viewportWidth,
-              customOptions.minPixelValue,
-              customOptions.unitPrecision,
-              customOptions.viewportUnit
-            )
-          );
-
-          code = code.replace(_source, $_source);
-        }
+        const convertedTemplate: string = _source.replace(
+          styleRegex,
+          (styleMatch, styleContent) => {
+            const $_source: string = styleContent.replace(
+              pxRegex,
+              createPxReplace(
+                customOptions.viewportWidth,
+                customOptions.minPixelValue,
+                customOptions.unitPrecision,
+                customOptions.viewportUnit
+              )
+            );
+            return `style="${$_source}"`; // 返回更新后的 style 属性
+          }
+        );
+        code = code.replace(_source, convertedTemplate);
       }
       return { code };
     },
